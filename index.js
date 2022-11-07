@@ -26,12 +26,20 @@ async function run() {
   try {
     await client.connect();
 
+    // get all photography data api
     app.get("/allphotography", async (req, res) => {
       const query = {};
       const result = await photoCollection.find(query).toArray();
       res.send(result);
     });
-
+    // get id query photography data api
+    app.get("/photography/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await photoCollection.findOne(query);
+      res.send(result);
+    });
+    // post new photography data
     app.post("/photography", async (req, res) => {
       const photo = req.body;
       const result = await photoCollection.insertOne(photo);
