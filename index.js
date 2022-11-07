@@ -20,6 +20,7 @@ const client = new MongoClient(uri, {
 });
 
 const photoCollection = client.db("all-photography").collection("photography");
+const reviewCollection = client.db("reviews").collection("review");
 
 // routes set
 async function run() {
@@ -45,6 +46,16 @@ async function run() {
       const result = await photoCollection.insertOne(photo);
       res.send(result);
     });
+
+    // post user review
+    app.post("/review", async (req, res) => {
+      const review = req.body;
+      const result = await reviewCollection.insertOne(review);
+      res.send(result);
+    });
+
+    // get user review
+    
   } finally {
     //
   }
