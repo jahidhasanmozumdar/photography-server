@@ -55,7 +55,11 @@ async function run() {
     });
 
     // get user review
-    
+    app.get("/review", async (req, res) => {
+      const query = {};
+      const result = await reviewCollection.find(query).toArray();
+      res.send(result);
+    });
   } finally {
     //
   }
