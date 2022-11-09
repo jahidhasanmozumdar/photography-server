@@ -57,19 +57,11 @@ async function run() {
     // get user review
     app.get("/review/:email", async (req, res) => {
       const email = req.params.email;
+      console.log(email);
       const filter = { email: email };
       const result = await reviewCollection.findOne(filter);
       res.send(result);
     });
-
-    // find by user review
-    // app.get("/email/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const query = { _id: ObjectId(id) };
-    //   const result = await reviewCollection.findOne(query);
-    //   res.send(result);
-    // });
-    // https://jahidphotography-api.onrender.com/allphotography
   } finally {
     //
   }
