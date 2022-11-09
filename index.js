@@ -57,9 +57,11 @@ async function run() {
     // get user review
     app.get("/review/:email", async (req, res) => {
       const email = req.params.email;
-      console.log(email);
+      if (email == undefined) {
+        return;
+      }
       const filter = { email: email };
-      const result = await reviewCollection.findOne(filter);
+      const result = await reviewCollection.find(filter).toArray();
       res.send(result);
     });
   } finally {
