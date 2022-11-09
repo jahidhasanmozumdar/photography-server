@@ -60,6 +60,15 @@ async function run() {
       const result = await reviewCollection.find(query).toArray();
       res.send(result);
     });
+
+    // find by user review
+    // app.get("/email/:id", async (req, res) => {
+    //   const id = req.params.id;
+    //   const query = { _id: ObjectId(id) };
+    //   const result = await reviewCollection.findOne(query);
+    //   res.send(result);
+    // });
+    // https://jahidphotography-api.onrender.com/allphotography
   } finally {
     //
   }
