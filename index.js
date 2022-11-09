@@ -54,6 +54,11 @@ async function run() {
       res.send(result);
     });
 
+    app.get("/review", async (req, res) => {
+      const query = {};
+      const result = await reviewCollection.find(query).toArray();
+      res.send(result);
+    });
     // get user review
     app.get("/review/:email", async (req, res) => {
       const email = req.params.email;
